@@ -1,7 +1,5 @@
-![hexlet-check status] (https://github.com/buriedundersea/rails-project-63/actions/workflows/hexlet-check.yml/badge.svg)
-![CI status] (https://github.com/buriedundersea/rails-project-63/actions/workflows/CIbi.yml/badge.svg)
-
-
+[![hexlet-check](https://github.com/buriedundersea/rails-project-63/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/buriedundersea/rails-project-63/actions/workflows/hexlet-check.yml)
+[![CI](https://github.com/buriedundersea/rails-project-63/actions/workflows/CI.yml/badge.svg)](https://github.com/buriedundersea/rails-project-63/actions/workflows/CI.yml)
 # HexletCode
 
 TODO: Delete this and the text below, and describe your gem
