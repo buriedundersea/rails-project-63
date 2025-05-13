@@ -51,7 +51,7 @@ DEPENDENCIES
   hexlet_code!
   minitest-power_assert
   rake (~> 13.0)
-  rubocop
+  rubocop (~> 1.75)
 
 BUNDLED WITH
    2.6.8

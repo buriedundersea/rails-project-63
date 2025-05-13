@@ -5,10 +5,10 @@ module HexletCode
   class Builder
     attr_reader :form_body, :options
 
-    def initialize(object, **options)
+    def initialize(object, **)
       @form_body = []
       @object = object
-      @options = options
+      @options = {**}
     end
 
     def input(obj_param, as: nil, **options)
