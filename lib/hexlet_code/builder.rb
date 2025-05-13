@@ -8,7 +8,7 @@ module HexletCode
     def initialize(object, **)
       @form_body = []
       @object = object
-      @options = {**}
+      @options = { ** }
     end
 
     def input(obj_param, as: nil, **options)
