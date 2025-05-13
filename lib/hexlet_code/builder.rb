@@ -19,9 +19,13 @@ module HexletCode
         tag = :textarea
         params = { name: obj_param, cols: '20', rows: '40' }.merge(options)
       end
-
+      label = Tag.build(:label, for: obj_param) { @object.public_send(obj_param) }
       result = Tag.build(tag, params) { @object.public_send(obj_param) }
-      @form_body << result
+      @form_body << label << result
+    end
+
+    def submit(value = 'Save')
+      @form_body << Tag.build(:input, type: 'submit', value: value)
     end
   end
 end

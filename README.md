@@ -23,18 +23,20 @@ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
 ## Usage
 ```ruby
 User = Struct.new(:name, :job, :gender, keyword_init: true)
-user = User.new name: 'rob', job: 'hexlet', gender: 'm'
+user = User.new name: 'Bob', job: 'hexlet', gender: 'm'
 
-HexletCode.form_for user do |f|
-  # Проверяет есть ли значение внутри name
+HexletCode.form_for user, url: '#' do |f|
   f.input :name
-  # Проверяет есть ли значение внутри job
-  f.input :job, as: :text
+  f.input :job
+  f.submit 'Wow'
 end
 
 # <form action="#" method="post">
-#   <input name="name" type="text" value="rob">
-#   <textarea name="job" cols="20" rows="40">hexlet</textarea>
+#   <label for="name">Bob</label>
+#   <input name="name" type="text" value="Bob">
+#   <label for="job">hexlet</label>
+#   <input name="job" type="text" value="hexlet">
+#   <input type="submit" value="Wow">
 # </form>
 ```
 ## Development

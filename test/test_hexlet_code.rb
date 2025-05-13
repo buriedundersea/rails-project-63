@@ -6,14 +6,14 @@ User = Struct.new(:name, :job, :gender, keyword_init: true)
 
 describe 'TestHexletCode' do
   before do
-    @user = User.new name: 'rob', job: 'hexlet', gender: 'm'
+    @user = User.new name: 'Bob', job: 'hexlet', gender: 'm'
   end
 
   it 'test_form_should_generate' do
     expected = File.read('test/test_html1.html')
-    result = (HexletCode.form_for(@user, url: '#') do |f|
-      f.input :name, class: 'user-input'
-      f.input :job, as: :text
+    result = (HexletCode.form_for @user do |f|
+      f.input :name
+      f.submit('Dont push it')
     end)
     assert { result == expected }
   end
