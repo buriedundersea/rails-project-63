@@ -5,14 +5,13 @@ require_relative 'hexlet_code/version'
 # Module
 module HexletCode
   autoload :Tag, 'hexlet_code/tag'
+  autoload :Builder, 'hexlet_code/builder'
+  autoload :Render, 'hexlet_code/render'
 
-  def self.form_for(object, **options, &block)
-    head_tag = {
-      action: options.key?(:url) ? options[:url] : '#',
-      method: :post
-    }.merge(options.except(:url))
-    tags = block&.call(object)
+  def self.form_for(object, **options)
+    builder = Builder.new(object, **options)
+    yield(builder) if block_given?
 
-    Tag.build('form', head_tag) { tags }
+    Render.render_html(builder.form_body, builder.options)
   end
 end

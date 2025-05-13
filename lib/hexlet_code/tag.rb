@@ -2,10 +2,15 @@
 
 module HexletCode
   # Tag
-  module Tag
-    def self.build(tag, attrs)
-      attrs_to_string = attrs.map { |k, v| "#{k}=\"#{v}\"" }.join(' ').prepend(' ')
-      "<#{tag}#{attrs_to_string}>#{yield if block_given?}</#{tag}>"
+  class Tag
+    SINGLE_TAGS = [:input].freeze
+    def self.build(tag, params)
+      params_to_string = params.map { |k, v| "#{k}=\"#{v}\"" }.join(' ').prepend(' ')
+      if SINGLE_TAGS.include?(tag)
+        "<#{tag}#{params_to_string}>"
+      else
+        "<#{tag}#{params_to_string}>#{yield if block_given?}</#{tag}>"
+      end
     end
   end
 end
