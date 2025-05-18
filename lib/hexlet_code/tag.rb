@@ -3,7 +3,7 @@
 module HexletCode
   # Tag
   class Tag
-    SINGLE_TAGS = [:input].freeze
+    SINGLE_TAGS = %w[input].freeze
     def self.build(tag, params)
       params_to_string = params.map { |k, v| "#{k}=\"#{v}\"" }.join(' ').prepend(' ')
       if SINGLE_TAGS.include?(tag)

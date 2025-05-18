@@ -10,4 +10,5 @@ gem 'rake', '~> 13.0'
 group :development do
   gem 'minitest-power_assert'
   gem 'rubocop', '~> 1.75', require: false
+  gem 'activesupport'
 end

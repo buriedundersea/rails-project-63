@@ -5,27 +5,34 @@ module HexletCode
   class Builder
     attr_reader :form_body, :options
 
-    def initialize(object, **)
-      @form_body = []
+    def initialize(object, **options)
       @object = object
-      @options = { ** }
+      action = options.fetch(:url, '#')
+      method = options.fetch(:method, 'post')
+      @form_body = {
+        inputs: [],
+        submit: { options: nil },
+        form_options: { action:, method: }.merge(options.except(:url, :method))
+      }
     end
 
-    def input(obj_param, as: nil, **options)
-      if as.nil?
-        tag = :input
-        params = { name: obj_param, type: 'text', value: @object.public_send(obj_param) }.merge(options)
-      elsif as == :text
-        tag = :textarea
-        params = { name: obj_param, cols: '20', rows: '40' }.merge(options)
-      end
-      label = Tag.build(:label, for: obj_param) { obj_param.capitalize }
-      result = Tag.build(tag, params) { @object.public_send(obj_param) }
-      @form_body << label << result
+    def input(name, **options)
+      @form_body[:inputs] << build_input_attributes(name, options)
     end
 
-    def submit(value = 'Save')
-      @form_body << Tag.build(:input, type: 'submit', value: value)
+    def submit(value = 'Save', attributes = {})
+      all_attributes = { tag: 'input', type: 'submit', value: }.merge(attributes)
+      @form_body[:submit] = { options: all_attributes }
+    end
+
+    def build_input_attributes(name, options)
+      {
+        name: name,
+        tag_type: options.fetch(:as, :string),
+        value: @object.public_send(name),
+        label: { for: name, content: name.capitalize },
+        options: options.except(:as)
+      }
     end
   end
 end
