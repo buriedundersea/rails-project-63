@@ -28,7 +28,7 @@ module HexletCode
     def build_input_attributes(name, options)
       {
         name: name,
-        tag_type: options.fetch(:as, :string),
+        type: options.fetch(:as, :string),
         value: @object.public_send(name),
         label: { for: name, content: name.capitalize },
         options: options.except(:as)

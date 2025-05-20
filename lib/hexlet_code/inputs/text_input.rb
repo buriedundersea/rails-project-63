@@ -2,23 +2,20 @@
 
 module HexletCode
   module Inputs
+    # Text
     class TextInput < BaseInput
       TAG_NAME = 'textarea'
       COLS = 20
       ROWS = 40
-
-      def initialize
-        super
-      end
-
       def input
-        common_attributes = { tag: TAG_NAME, cols: COLS, rows: ROWS }
-        @input[:content] = @input[:value]
-        attributes = @input.except(:type, :value)
-        input_attributes = attributes.merge(common_attributes)
-        HexletCode::Tag.build(input_attributes[:tag], input_attributes.except(:tag))
+        tag = TAG_NAME
+        input_attributes = {
+          name: @input[:name],
+          cols: COLS,
+          rows: ROWS
+        }.merge(@input[:options])
+        HexletCode::Tag.build(tag, input_attributes) { @input[:value] }
       end
-
     end
   end
 end
