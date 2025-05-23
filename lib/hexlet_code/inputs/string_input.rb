@@ -5,6 +5,7 @@ module HexletCode
     # String
     class StringInput < BaseInput
       TAG_NAME = 'input'
+
       def input
         tag = TAG_NAME
         input_attributes = {

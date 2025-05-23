@@ -5,3 +5,7 @@ require 'hexlet_code'
 
 require 'minitest/autorun'
 require 'minitest/power_assert'
+
+def get_fixture(filename)
+  File.read("test/fixtures/#{filename}")
+end

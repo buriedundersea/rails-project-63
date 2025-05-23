@@ -10,7 +10,7 @@ describe 'TestHexletCode' do
   end
 
   it 'test_form_should_generate' do
-    expected = File.read('test/test_html1.html')
+    expected = get_fixture('input_form_with_submit.html')
     result = (HexletCode.form_for @user do |f|
       f.input :name
       f.submit('Dont push it')
@@ -19,7 +19,7 @@ describe 'TestHexletCode' do
   end
 
   it 'test_change_form_default_options_should_generate' do
-    expected = File.read('test/test_html2.html')
+    expected = get_fixture('textarea_form_with_changed_default_options.html')
     result = (HexletCode.form_for(@user, url: '#') do |f|
       f.input :job, as: :text, rows: 50, cols: 50
     end)

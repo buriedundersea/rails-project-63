@@ -7,6 +7,7 @@ module HexletCode
       TAG_NAME = 'textarea'
       COLS = 20
       ROWS = 40
+
       def input
         tag = TAG_NAME
         input_attributes = {
